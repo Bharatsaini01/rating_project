@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating</title>
+    <link rel="stylesheet" href="../static/rating.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% if avg_rating == 1 %}
+    <style>
+        #rating_box .star1 {
+            color: red;
+        }
+    </style>
+    {% endif %}
+    {% if avg_rating == 2 %}
+    <style>
+        #rating_box .star2 {
+            color: red;
+        }
+    </style>
+    {% endif %}
+    {% if avg_rating == 3 %}
+    <style>
+        #rating_box .star3 {
+            color: yellow;
+        }
+    </style>
+    {% endif %}
+    {% if avg_rating == 4 %}
+    <style>
+        #rating_box .star4 {
+            color: yellow;
+        }
+    </style>
+    {% endif %}
+    {% if avg_rating == 5 %}
+    <style>
+        #rating_box .star5 {
+            color: yellow;
+        }
+    </style>
+    {% endif %}
+</head>
+
+<body>
+    <h1>Give Rate</h1>
+    <form action="/" method="post" class="form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter Name..." required><br>
+        <label for="rating-text">Give Rate:</label>
+
+        <br>
+
+        <div class="rating-wrapper">
+            <div class="star-rating">
+                <input type="radio" id="rate5" name="rate" value="5">
+                <label for="rate5" class="material-icons" data-index="5" data-text="Excellent">star</label>
+
+                <input type="radio" id="rate4" name="rate" value="4">
+                <label for="rate4" class="material-icons" data-index="4" data-text="Very Good">star</label>
+
+                <input type="radio" id="rate3" name="rate" value="3">
+                <label for="rate3" class="material-icons" data-index="3" data-text="Good">star</label>
+
+                <input type="radio" id="rate2" name="rate" value="2">
+                <label for="rate2" class="material-icons" data-index="2" data-text="Bad">star</label>
+
+                <input type="radio" id="rate1" name="rate" value="1">
+                <label for="rate1" class="material-icons" data-index="1" data-text="Very Bad">star</label>
+            </div>
+
+            <div id="rating-text" class="rating-text">Select Rating</div>
+        </div>
+
+
+
+        <button type="submit">Rate</button>
+    </form>
+
+    <div id="rating_box" class="container">
+        <table>
+            <tr>
+                <td>
+                    <i class="material-icons star1 star2 star3 star4 star5">star</i>
+                </td>
+                <td>
+                    <i class="material-icons star2 star3 star4 star5">star</i>
+                </td>
+                <td>
+                    <i class="material-icons star3 star4 star5">star</i>
+                </td>
+                <td>
+                    <i class="material-icons star4 star5">star</i>
+                </td>
+                <td>
+                    <i class="material-icons star5">star</i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    const labels = document.querySelectorAll('.star-rating label');
+    const ratingText = document.getElementById('rating-text');
+  
+    labels.forEach(label => {
+      // Hover text
+      label.addEventListener('mouseenter', () => {
+        ratingText.textContent = label.getAttribute('data-text');
+      });
+  
+      // Reset text on mouse leave
+      label.addEventListener('mouseleave', () => {
+        const checked = document.querySelector('.star-rating input:checked');
+        if (checked) {
+          const selectedLabel = document.querySelector(`label[for="${checked.id}"]`);
+          ratingText.textContent = selectedLabel.getAttribute('data-text');
+        } else {
+          ratingText.textContent = 'Select Rating';
+        }
+      });
+  
+      // On click (selection)
+      label.addEventListener('click', () => {
+        ratingText.textContent = label.getAttribute('data-text');
+      });
+    });
+  </script>
+  
+
+</html>

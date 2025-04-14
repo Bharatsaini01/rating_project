@@ -1,0 +1,135 @@
+#rating_box table,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+
+}
+
+#rate {
+    width: 100px;
+}
+
+#rating_box i {
+    font-size: 100px;
+    color: white;
+}
+
+body h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: lightgray;
+}
+
+
+#stars input {
+    display: none;
+
+}
+
+.form,
+#rating_box {
+    border: 5px solid black;
+    background-color: aqua;
+    width: 70%;
+    margin: 10px 15%;
+    padding: 20px;
+}
+
+.form input {
+    width: 95%;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    font-size: medium;
+
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    background-color: blue;
+    font-size: medium;
+    color: white;
+    font-weight: bold;
+}
+
+.star-rating {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    display: inline-flex;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 40px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#rate1:hover~label,
+#rate2:hover~label,
+#rate2:hover {
+    color: red;
+}
+
+#rate3:hover~label,
+#rate3:hover,
+#rate4:hover~label,
+#rate4:hover {
+    color: orange;
+}
+
+#rate5:hover~label,
+#rate5:hover {
+    color: green;
+}
+
+#rate1:checked~label[data-index="1"],
+#rate2:checked~label[data-index="1"],
+#rate2:checked~label[data-index="2"] {
+    color: red;
+}
+
+#rate3:checked~label[data-index="1"],
+#rate3:checked~label[data-index="2"],
+#rate3:checked~label[data-index="3"],
+#rate4:checked~label[data-index="4"] {
+    color: orange;
+}
+
+#rate4:checked~label[data-index="1"],
+#rate4:checked~label[data-index="2"],
+#rate4:checked~label[data-index="3"],
+#rate4:checked~label[data-index="4"] {
+    color: orange;
+}
+
+#rate5:checked~label {
+    color: green;
+}
+
+.rating-text {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.rating-wrapper{
+    text-align: center;
+}
