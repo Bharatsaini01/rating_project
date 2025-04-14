@@ -6,6 +6,7 @@ from rating_project.database import engine,Session,sessionlocal
 from rating_project import models,schemas
 from typing import List
 from rating_project.utils import avg_rating,rate_exp
+import uvicorn,os
 
 
 app = FastAPI()
@@ -43,3 +44,5 @@ async def get_avg_rating(request: Request,db : Session = Depends(get_db)):
     rating_exp = rate_exp(avg_rate) 
     return templates.TemplateResponse("rating.html",{"request":request,"avg_rating" : avg_rate,"rating_exp":rating_exp})
 
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))

@@ -4,6 +4,7 @@ anyio==4.9.0
 certifi==2025.1.31
 click==8.1.8
 databases==0.9.0
+deta==1.2.0
 dnspython==2.7.0
 email_validator==2.2.0
 fastapi==0.115.12
