@@ -2,18 +2,18 @@ from fastapi import FastAPI, Request,Form,Depends
 from fastapi.responses import HTMLResponse,RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from database import engine,Session,sessionlocal
-import models,schemas
+from rating_project.database import engine,Session,sessionlocal
+from rating_project import models,schemas
 from typing import List
-from utils import avg_rating,rate_exp
-import uvicorn 
+from rating_project.utils import avg_rating,rate_exp
+
 
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
-templates = Jinja2Templates(directory="templates")
-app.mount("/static",StaticFiles(directory="static"),name="static")
+templates = Jinja2Templates(directory="rating_project/templates")
+app.mount("/static",StaticFiles(directory="rating_project/static"),name="static")
 
 async def get_db():
     db = sessionlocal()
