@@ -42,6 +42,12 @@
         }
     </style>
     {% endif %}
+    <!-- <style>
+        #total_rate {
+            color: red;
+            font-size: xx-large;
+        }
+    </style> -->
 </head>
 
 <body>
@@ -78,56 +84,58 @@
 
         <button type="submit">Rate</button>
     </form>
-
-    <div id="rating_box" class="container">
-        <table>
-            <tr>
-                <td>
-                    <i class="material-icons star1 star2 star3 star4 star5">star</i>
-                </td>
-                <td>
-                    <i class="material-icons star2 star3 star4 star5">star</i>
-                </td>
-                <td>
-                    <i class="material-icons star3 star4 star5">star</i>
-                </td>
-                <td>
-                    <i class="material-icons star4 star5">star</i>
-                </td>
-                <td>
-                    <i class="material-icons star5">star</i>
-                </td>
-            </tr>
-        </table>
+    <div id="rating_box">
+        <div class="container">
+            <table>
+                <tr>
+                    <td>
+                        <i class="material-icons star1 star2 star3 star4 star5">star</i>
+                    </td>
+                    <td>
+                        <i class="material-icons star2 star3 star4 star5">star</i>
+                    </td>
+                    <td>
+                        <i class="material-icons star3 star4 star5">star</i>
+                    </td>
+                    <td>
+                        <i class="material-icons star4 star5">star</i>
+                    </td>
+                    <td>
+                        <i class="material-icons star5">star</i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p id="total_rate">Total Ratings : {{ total_rating }}</p>
     </div>
 </body>
 <script>
     const labels = document.querySelectorAll('.star-rating label');
     const ratingText = document.getElementById('rating-text');
-  
+
     labels.forEach(label => {
-      // Hover text
-      label.addEventListener('mouseenter', () => {
-        ratingText.textContent = label.getAttribute('data-text');
-      });
-  
-      // Reset text on mouse leave
-      label.addEventListener('mouseleave', () => {
-        const checked = document.querySelector('.star-rating input:checked');
-        if (checked) {
-          const selectedLabel = document.querySelector(`label[for="${checked.id}"]`);
-          ratingText.textContent = selectedLabel.getAttribute('data-text');
-        } else {
-          ratingText.textContent = 'Select Rating';
-        }
-      });
-  
-      // On click (selection)
-      label.addEventListener('click', () => {
-        ratingText.textContent = label.getAttribute('data-text');
-      });
+        // Hover text
+        label.addEventListener('mouseenter', () => {
+            ratingText.textContent = label.getAttribute('data-text');
+        });
+
+        // Reset text on mouse leave
+        label.addEventListener('mouseleave', () => {
+            const checked = document.querySelector('.star-rating input:checked');
+            if (checked) {
+                const selectedLabel = document.querySelector(`label[for="${checked.id}"]`);
+                ratingText.textContent = selectedLabel.getAttribute('data-text');
+            } else {
+                ratingText.textContent = 'Select Rating';
+            }
+        });
+
+        // On click (selection)
+        label.addEventListener('click', () => {
+            ratingText.textContent = label.getAttribute('data-text');
+        });
     });
-  </script>
-  
+</script>
+
 
 </html>
